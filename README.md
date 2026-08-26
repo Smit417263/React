@@ -1,26 +1,110 @@
-React Basics
+# React Basics
 
-# only need to run npm install the first time you create the project to get all dependencies
+Quick reference for the core concepts covered in this tutorial.
 
-# to run the project use: npm run dev
+## 🚀 Project Setup
 
-# You can use Components to create more maintainable code
-- the component needs to be Uppercase and must have the "export" tag infront inorder to use in a different file
+```bash
+# First time only
+npm install
 
-# jsx files allow you to write html in js files that would usually give you an error
+# Run the project
+npm run dev
+```
 
-# in order to use dynamic variables in your html code of your jsx file: need to use curly braces
+## 🧩 Components
 
-# import images at the top and use the alias so it doesn't break during build/production
+* Components make code **reusable and maintainable**.
+* Component names must start with an **uppercase letter**.
+* Export components if they need to be used in another file.
+* Best practice: keep components in a `components/` folder.
 
-# Props are custom html attributes set onto Componenets
+```jsx
+export function Card() {
+  return <div>...</div>;
+}
+```
 
-# named exports need to be imported with curly braces. Default exports can be exported as the function name without curly braces
+## ⚛️ JSX
 
-# moving components into their own files in the components folder is best practice.
-# Also want to move relavent css files into seperate files in the components folder. NOTE this doesn't limit the scope of the style to that component. if you create a certain html object that you have css code for it will still be applied to it as well
-# need to import the css file into the component that you want to apply it to though
+* `.jsx` files let you write **HTML-like syntax inside JavaScript**.
+* Use `{}` to insert **dynamic JavaScript values**.
 
-# 2 rules for calling react hooks
-# 1 only call hooks in side component functions
-# 2 only call hooks at the top level of the component (basically right at the start where there is no if statment, function or inner loop)
+```jsx
+<h1>Hello, {name}!</h1>
+```
+
+## 🖼️ Images
+
+Import images at the top of the file and use the imported alias.
+
+```jsx
+import logo from "./logo.png";
+
+<img src={logo} />
+```
+
+This ensures images are handled correctly during the **build/production process**.
+
+## 📦 Props
+
+* Props are **custom attributes/data passed to components**.
+* They allow components to be dynamic and reusable.
+
+```jsx
+<Card name="Smit" />
+```
+
+## 📤 Exports & Imports
+
+**Named export** → import with `{}`:
+
+```jsx
+export function Card() {}
+import { Card } from "./Card";
+```
+
+**Default export** → no `{}`:
+
+```jsx
+export default Card;
+import Card from "./Card";
+```
+
+## 🎨 Component CSS
+
+* Keep relevant CSS in the component's folder.
+* Import the CSS into the component:
+
+```jsx
+import "./Card.css";
+```
+
+⚠️ **Important:** Regular CSS is **not scoped to the component**. A CSS rule can affect matching elements elsewhere in the app.
+
+## 🪝 React Hooks
+
+Hooks have **2 rules**:
+
+1. Only call hooks **inside React component functions**.
+2. Only call hooks at the **top level** of the component.
+
+   * ❌ Not inside `if` statements
+   * ❌ Not inside loops
+   * ❌ Not inside nested functions
+
+```jsx
+function App() {
+  const [count, setCount] = useState(0); // ✅
+
+  if (count > 5) {
+    // useState() here would be ❌
+  }
+}
+```
+
+### 🧠 Quick Memory
+
+**Components → JSX → Props → Exports → CSS → Hooks**
+
+Reusable components + dynamic JSX + props + clean file organization + hooks at the top level.
