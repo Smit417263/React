@@ -108,3 +108,6 @@ function App() {
 **Components → JSX → Props → Exports → CSS → Hooks**
 
 Reusable components + dynamic JSX + props + clean file organization + hooks at the top level.
+
+
+Use the map function on objects from the data.js file to apply the same logic to multiple objects
